@@ -18,6 +18,52 @@ Um Sistema de Gerenciamento de Banco de Dados (SGBD) é um software projetado pa
 
 Em resumo, um SGBD oferece várias vantagens em relação aos sistemas de arquivos tradicionais, tornando o gerenciamento de dados mais eficiente, seguro e robusto, especialmente em ambientes onde a quantidade de dados é grande e a integridade, segurança e escalabilidade são essenciais.
 
+## 2. BD Campeonato - Construa o Diagrama Entidade Relacionamento para os requisitos:
+
+```mermaid
+erDiagram
+  CAMPEONATO {
+    string codigo
+    string nome
+    string data_inicio
+    string data_fim
+  }
+
+  PARTIDA {
+    string data
+    string endereco
+    string[] gols
+  }
+
+  EQUIPE {
+    string codigo
+    string nome
+  }
+
+  JOGADOR {
+    string codigo
+    string nome
+    string apelido
+    string posicao
+  }
+
+  COMISSAO{
+    string codigo
+    string nome
+    string funcao
+  }
+
+
+
+
+  CAMPEONATO }|--|{ EQUIPE : "Tem"
+  CAMPEONATO ||--|{ PARTIDA : "Tem"
+  EQUIPE }|--|{ JOGADOR : "Possui"
+  EQUIPE }|--|{ COMISSAO : "Possui"
+  EQUIPE }|--|{ PARTIDA : "Escalacao"
+
+```
+
 ## 3. BD Universidade
 
 ```mermaid
