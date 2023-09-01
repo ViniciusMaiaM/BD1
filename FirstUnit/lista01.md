@@ -64,7 +64,7 @@ erDiagram
 
 ```
 
-## 3. BD Universidade
+## 3. BD Universidade - Construa o Diagrama Entidade Relacionamento para os requisitos:
 
 ```mermaid
 erDiagram
@@ -128,4 +128,62 @@ DISCENTE_MONITOR {
   TURMA }|--|| DISCIPLINA : "É de"
   DISCENTE_MONITOR one or many to only one TURMA : tem
   DOCENTE }|--|| DEPARTAMENTO : "Vinculado a"
+```
+
+## 4. BD Locadora de Veículos - Construa o Diagrama Entidade Relacionamento para os requisitos:
+
+```mermaid
+erDiagram
+   LOCADORA {
+  string nome
+  int quantidade_veiculos
+}
+
+VEICULO {
+  int numero
+  string marca
+  int ano
+  string placa
+  string cor
+  float quilometragem
+  float valor_locacao
+  string tipo_locacao
+  string categoria
+}
+
+CLIENTE {
+  string CPF
+  string CNH
+  string nome
+  string endereco
+  int idade
+  string telefone
+}
+
+REGISTRO_ALUGUEL {
+  CLIENTE cliente
+  VEICULO veiculo
+  int numero
+  string data_locacao
+  string hora_locacao
+}
+
+TECNICO {
+  int numero_cadastro
+  string CPF
+  string nome
+}
+
+PERFIL_CLIENTE {
+  int total_alugueis
+  float total_horas_alugadas
+  float total_valor_alugueis
+  int total_multas
+}
+
+LOCADORA ||--o{ VEICULO : "Possui"
+  LOCADORA }|--o{ CLIENTE : "Possui"
+  LOCADORA ||--o{ TECNICO : "Possui"
+  LOCADORA ||--o{ REGISTRO_ALUGUEL : "Realiza"
+  CLIENTE }|--o{ PERFIL_CLIENTE : "Possui"
 ```
