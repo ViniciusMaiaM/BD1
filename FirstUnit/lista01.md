@@ -187,3 +187,51 @@ LOCADORA ||--o{ VEICULO : "Possui"
   LOCADORA ||--o{ REGISTRO_ALUGUEL : "Realiza"
   CLIENTE }|--o{ PERFIL_CLIENTE : "Possui"
 ```
+
+## 5. Entidade-Relacionamento:
+
+```mermaid
+erDiagram
+
+CLIENTE {
+  string documento_identificacao
+  string nome
+  string telefone
+  string endereco
+}
+
+PRODUTO {
+  string nome_produto
+  string tipo
+  float preco
+  int quantidade_estoque
+}
+
+COMPRA {
+  int numero_compra
+  string data_compra
+  float valor_total
+}
+
+FUNCIONARIO {
+  string nome_funcionario
+  string telefone
+  string endereco
+  float salario
+  string funcao
+  string documento_identificacao
+}
+
+FORNECEDOR {
+  string nome_fornecedor
+  string CNPJ
+  string telefone
+  string endereco
+}
+
+CLIENTE }|..|{ COMPRA : "Realiza"
+  PRODUTO }|--|{ COMPRA : "Inclui"
+  FUNCIONARIO }|--|{ COMPRA : "Atende"
+  FORNECEDOR }|--|{ COMPRA : "Fornece"
+
+```
